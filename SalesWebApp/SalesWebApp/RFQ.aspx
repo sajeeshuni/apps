@@ -2,30 +2,89 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" >
-    
+    <script type="text/javascript">
+        function updateFields() {
+            var value = $("#MainContent_TxtOrdCust_Search").val();
+            //Order Column
+            $("#MainContent_TxtOrdCust_Name").val(value);
+            $("#MainContent_TxtOrdCust_Addr1").val(value);
+            $("#MainContent_TxtOrdCust_Addr2").val(value);
+            $("#MainContent_TxtOrdCust_Addr3").val(value);
+
+            //Invoice Column
+            $("#MainContent_TxtInvCust_Search").val(value);
+            $("#MainContent_TxtInvCust_Name").val(value);
+            $("#MainContent_TxtInvCust_Addr1").val(value);
+            $("#MainContent_TxtInvCust_Addr2").val(value);
+            $("#MainContent_TxtInvCust_Addr3").val(value);
+
+            //Delivery Column
+            $("#MainContent_TxtDelivCust_Search").val(value);
+            $("#MainContent_TxtDelivCust_Name").val(value);
+            $("#MainContent_TxtDelivCust_Addr1").val(value);
+            $("#MainContent_TxtDelivCust_Addr2").val(value);
+            $("#MainContent_TxtDelivCust_Addr3").val(value);
+        }
+        $(document).ready(function () {
+            SearchText();
+        });
+        function SearchText() {
+            var RFQno = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            var address
+            $("#MainContent_TxtRFQNumber").autocomplete({
+                source: RFQno
+            });
+            $("#MainContent_TxtOrdCust_Search").autocomplete({
+                source: RFQno,
+                close: function (event, ui) { updateFields(); }
+            });
+        }
+    </script>    
     <br />
     <div class="form-horizontal">
         <div class="row">
             <div class="col-lg-10"></div>
             <div class="col-md-0">
                 <div class="form-group">
-                    <button class="btn form-control bg-red">Clear</button>
+                    <button class="btn form-control clr bg-red">Clear</button>
                 </div>
             </div>
         </div>
+        <br />
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    
                     <asp:Label CssClass="cust-label" ID="Label1" Text="RFQ#" runat="server" ></asp:Label>
-                    <asp:TextBox ID="TxtRFQNumber" runat="server" CssClass="form-control border-radius-3"></asp:TextBox>
+                    <asp:TextBox ID="TxtRFQNumber" runat="server" AutoCompleteType="Disabled" CssClass="form-control border-radius-3"></asp:TextBox>                   
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <asp:Label CssClass="cust-label" ID="Label25" Text="Project Type" runat="server" ></asp:Label>
-                    <asp:DropDownList ID="DropDownRFQType" runat="server" CssClass="form-control border-radius-3" >
-
+                    <asp:DropDownList ID="DropDownRFQType" runat="server" CssClass="form-control border-radius-3">
                     </asp:DropDownList>
                 </div>
             </div>
@@ -211,15 +270,11 @@
                 </div>
             </div>
 
-            <div class="col-md-2 padding-top-23">
-                <div class="form-group">
-                    <asp:Button ID="BtnSave" runat="server" CssClass="form-control border-radius-3 btn btn-primary" Text="Save" />
-                </div>
-            </div>
+            <div class="col-md-1 padding-top-23"></div>
 
-            <div class="col-md-1 padding-top-23 ">
+            <div class="col-md-2 padding-top-23 ">
                 <div class="form-group">                    
-                    <asp:Button ID="Button1" runat="server" CssClass="form-control border-radius-3 btn bg-red" Text="Clear" />
+                   <asp:Button ID="BtnSave" runat="server" CssClass="form-control border-radius-3 btn btn-primary" Text="Save" />
                 </div>
             </div>
 

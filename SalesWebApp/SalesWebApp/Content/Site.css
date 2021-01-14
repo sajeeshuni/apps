@@ -391,3 +391,10 @@ input[type="checkbox"] {
 .vertical-align-top{
     vertical-align:top !important;
 }
+
+.clr {
+    border-radius: 2em;
+    position: absolute;
+    right: 5px;
+    top: 55px;
+}

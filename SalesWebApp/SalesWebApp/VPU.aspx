@@ -1,21 +1,56 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VPU.aspx.cs" Inherits="SalesWebApp.VPU" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <br />
-    <div class="form-horizontal ">
+      <script type="text/javascript">
+          $(document).ready(function () {
+              SearchText();
+          });
+          function SearchText() {
+              var RFQno = [
+                  "ActionScript",
+                  "AppleScript",
+                  "Asp",
+                  "BASIC",
+                  "C",
+                  "C++",
+                  "Clojure",
+                  "COBOL",
+                  "ColdFusion",
+                  "Erlang",
+                  "Fortran",
+                  "Groovy",
+                  "Haskell",
+                  "Java",
+                  "JavaScript",
+                  "Lisp",
+                  "Perl",
+                  "PHP",
+                  "Python",
+                  "Ruby",
+                  "Scala",
+                  "Scheme"
+              ];
+              var address
+              $("#MainContent_TxtRFQNumber").autocomplete({
+                  source: RFQno
+              });
+          }
+      </script>        
+    <br />
+    <div class="form-horizontal">
         <div class="row">
             <div class="col-lg-10"></div>
             <div class="col-md-0">
                 <div class="form-group">
-                    <button class="btn form-control bg-red">Clear</button>
+                    <button class="btn form-control clr bg-red">Clear</button>
                 </div>
             </div>
         </div>
+        <br />
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <asp:Label ID="Label1" Text="RFQ #" runat="server"></asp:Label>
-                    <asp:TextBox ID="TxtRFQNumber" runat="server" CssClass="form-control border-radius-3"></asp:TextBox>
-
+                    <asp:Label CssClass="cust-label" ID="Label1" Text="RFQ#" runat="server" ></asp:Label>
+                    <asp:TextBox ID="TxtRFQNumber" runat="server" AutoCompleteType="Disabled" CssClass="form-control border-radius-3"></asp:TextBox>                   
                 </div>
             </div>
             <div class="col-md-4">

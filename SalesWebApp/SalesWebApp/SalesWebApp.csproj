@@ -139,6 +139,8 @@
     <Content Include="QA.aspx" />
     <Content Include="RFQ.aspx" />
     <Content Include="Scripts\custom-file-input.js" />
+    <Content Include="Scripts\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery-v1.min.js" />
     <Content Include="Scripts\jquery.custom-file-input.js" />
     <Content Include="SOPO.aspx" />
