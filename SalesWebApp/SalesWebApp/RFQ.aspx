@@ -55,7 +55,22 @@
             ];
             var address
             $("#MainContent_TxtRFQNumber").autocomplete({
-                source: RFQno
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "RFQ.aspx.cs/GetCompletionListRFQ",
+                        data: "{'RFQno':'" + document.getElementById('MainContent_TxtRFQNumber').value + "'}",
+                        dataType: "json",
+                        success: function (data) {
+
+                            response(data.d);
+                        },
+                        error: function (result) {
+                            alert("No Match");
+                        }
+                    });
+                }
             });
             $("#MainContent_TxtOrdCust_Search").autocomplete({
                 source: RFQno,

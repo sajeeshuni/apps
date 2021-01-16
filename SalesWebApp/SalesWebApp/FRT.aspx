@@ -33,11 +33,25 @@
               ];
               var address
               $("#MainContent_TxtRFQNumber").autocomplete({
-                  source: RFQno
-              });
+                  source: function (request, response) {
+                      $.ajax({
+                          type: "POST",
+                          contentType: "application/json; charset=utf-8",
+                          url: "RFQ.aspx/GetRFQNumber",
+                          data: "{'RFQno':'" + document.getElementById('MainContent_TxtRFQNumber').value + "'}",
+                          dataType: "json",
+                          success: function (data) {
+                              response(data.d);
+                          },
+                          error: function (result) {
+                              alert("No Match");
+                          }
+                      });
+                  }
+              });       
           }
       </script>    
-    <br />
+
     <div class="form-horizontal">
         <div class="row">
             <div class="col-lg-10"></div>
@@ -58,7 +72,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <asp:Label ID="Label2" Text="Customer" runat="server"></asp:Label>
-                    <asp:Label ID="Lbl_Customer"  CssClass="form-control border-radius-3 max-width-280" runat="server"></asp:Label>
+                    <asp:Label ID="Lbl_Customer"  CssClass="form-control border-radius-3 max-width-280 margin-top-5" runat="server"></asp:Label>
                    
                 </div>
             </div>
